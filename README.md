@@ -1,5 +1,5 @@
 # SC-2023-MUSE-solver
-It should be noticed that we evaluate static Dragonfly with adaptive routing and "Thoughtful MUSE" by using the solver, and the other version of MUSE, i.e., "Quick-minded MUSE" is evaluated in the simulator that is introduced in another repository <https://github.com/Lee-Zijian/SC-2023-MUSE-simulator>.
+It should be noticed that we evaluate static Dragonfly with adaptive routing and "Thoughtful MUSE" by using the solver, and the other version of MUSE, i.e., "Quick-minded MUSE" is evaluated in the simulator that is introduced in [this repository](https://github.com/Lee-Zijian/SC-2023-MUSE-simulator).
 
 ## Dependency
 
@@ -8,13 +8,25 @@ It should be noticed that we evaluate static Dragonfly with adaptive routing and
 * deprecated
 * scipy
 
-All the dependencies are installed in the conda environment SC23-160. But you may need to install your gurobi license. You may install your license according to the documentation of gurobi.
+All the dependencies are listed in the *requirements.txt*. You can use *pip install -r requirements.txt* to install all the dependencies or use the prebuilt [docker images](https://hub.docker.com/repository/docker/ricardoevans/sc23-160-lp-mip). You can also build the docker image by simply running *docker build -t ricardoevans/sc23-160-lp-mip .* under this directory. 
+
+However, you may need to install your gurobi license. You may install your license according to the documentation of gurobi.
 
 ## Usage
 
-```bash
-python dragonfly-model.py dataset p a h [ocs_layer_count=0] [background_layer=True] [fixed_ocs_layer=False] [random_seed=0] [mip_gap=0.0001]
-```
+There are two ways to run the solver:
+
+* Directly running python scripts:
+
+    ```bash
+    python dragonfly-model.py dataset p a h [ocs_layer_count=0] [background_layer=True] [fixed_ocs_layer=False] [random_seed=0] [mip_gap=0.0001]
+    ```
+* Running docker image (Remember to replace the gurobi license file path):
+    ```bash
+    docker pull ricardoevans/sc23-160-lp-mip
+    docker run --volume={PATH_TO_YOUR_LICENSE_FILE_HERE}:/opt/gurobi/gurobi.lic:ro \
+        ricardoevans/sc23-160-lp-mip dataset p a h [ocs_layer_count=0] [background_layer=True] [fixed_ocs_layer=False] [random_seed=0] [mip_gap=0.0001]
+    ```
 
 The dataset parameter can be either a dataset file (normalized traffic matrix, see examples in datasets folder) or a name in the following list:
 
