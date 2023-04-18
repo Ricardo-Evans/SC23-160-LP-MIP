@@ -6,12 +6,12 @@ import gurobipy as gp
 
 InjectRateName = "inject_rate"
 InjectRateConstraintName = "inject_rate_constraint"
-Variables = typing.NamedTuple("Variables", flow_status=dict['Edge', dict['Flow', gp.Var]] | None, inject_rate=gp.Var, enabled_edges=dict['Edge', gp.Var] | None)
+Variables = typing.NamedTuple("Variables", flow_status=typing.Dict['Edge', typing.Dict['Flow', gp.Var]] | None, inject_rate=gp.Var, enabled_edges=typing.Dict['Edge', gp.Var] | None)
 Constraints = typing.NamedTuple("Constraints",
-                                inject_rate_constraint=gp.Constr, edge_capacity_constraints=dict['Edge', gp.Constr], net_flow_rate_at_each_node_constraints=dict['Node', dict['Flow', gp.Constr]],
-                                enabled_edges_constraints=dict['Edge', gp.Constr] | None, conflict_edges_constraints=dict[str, gp.Constr] | None, synchronous_edges_constraints=dict[str, gp.Constr] | None)
-TrafficPattern = set['Flow']
-CompiledNetwork = tuple[gp.Model, Variables, Constraints]
+                                inject_rate_constraint=gp.Constr, edge_capacity_constraints=typing.Dict['Edge', gp.Constr], net_flow_rate_at_each_node_constraints=typing.Dict['Node', typing.Dict['Flow', gp.Constr]],
+                                enabled_edges_constraints=typing.Dict['Edge', gp.Constr] | None, conflict_edges_constraints=typing.Dict[str, gp.Constr] | None, synchronous_edges_constraints=typing.Dict[str, gp.Constr] | None)
+TrafficPattern = typing.Set['Flow']
+CompiledNetwork = typing.Tuple[gp.Model, Variables, Constraints]
 
 
 class Node:

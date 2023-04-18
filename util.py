@@ -9,9 +9,9 @@ import topology.dragonfly
 import topology.network
 
 ParameterReader = typing.Generator[str, None, None]
-DragonflyParameters = tuple[int, int, int, int, bool, bool, random.Random, float, int]
+DragonflyParameters = typing.Tuple[int, int, int, int, bool, bool, random.Random, float, int]
 ModelStep = typing.Callable[[float], tuple[str | typing.Iterable[str], float | typing.Iterable[float]]]
-ModelHistory = tuple[list[str | typing.Iterable[str]], list[float | typing.Iterable[float]]]
+ModelHistory = typing.Tuple[typing.List[str | typing.Iterable[str]], typing.List[float | typing.Iterable[float]]]
 
 Status = {
     gp.GRB.LOADED: "loaded",

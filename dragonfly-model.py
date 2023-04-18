@@ -1,5 +1,6 @@
 import math
 import sys
+import typing
 
 import gurobipy as gp
 
@@ -8,7 +9,7 @@ import topology.network
 import util
 
 
-def step_model(model: gp.Model, inject_rate_constraint: gp.Constr, rate: float) -> tuple[str, float]:
+def step_model(model: gp.Model, inject_rate_constraint: gp.Constr, rate: float) -> typing.Tuple[str, float]:
     print(f"solving start: injection rate: {rate}")
     inject_rate_constraint.setAttr(gp.GRB.Attr.RHS, rate)
     model.update()
