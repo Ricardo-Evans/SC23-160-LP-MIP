@@ -1,3 +1,6 @@
+# SC-2023-MUSE-solver
+It should be noticed that we evaluate static Dragonfly with adaptive routing and "Thoughtful MUSE" by using the solver, and the other version of MUSE, i.e., "Quick-minded MUSE" is evaluated in the simulator that is introduced in another repository <https://github.com/Lee-Zijian/SC-2023-MUSE-simulator>.
+
 **Dependency: **
 
 * gurobi 10 (Requires a valid license)
