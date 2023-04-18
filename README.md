@@ -1,7 +1,7 @@
 # SC-2023-MUSE-solver
 It should be noticed that we evaluate static Dragonfly with adaptive routing and "Thoughtful MUSE" by using the solver, and the other version of MUSE, i.e., "Quick-minded MUSE" is evaluated in the simulator that is introduced in another repository <https://github.com/Lee-Zijian/SC-2023-MUSE-simulator>.
 
-**Dependency: **
+## Dependency
 
 * gurobi 10 (Requires a valid license)
 * numpy
@@ -10,7 +10,7 @@ It should be noticed that we evaluate static Dragonfly with adaptive routing and
 
 All the dependencies are installed in the conda environment SC23-160. But you may need to install your gurobi license. You may install your license according to the documentation of gurobi.
 
-**Usage: **
+## Usage
 
 ```bash
 python dragonfly-model.py dataset p a h [ocs_layer_count=0] [background_layer=True] [fixed_ocs_layer=False] [random_seed=0] [mip_gap=0.0001]
